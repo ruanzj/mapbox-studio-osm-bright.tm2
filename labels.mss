@@ -102,11 +102,9 @@
 
 // City labels with dots for low zoom levels.
 // The separate attachment keeps the size of the XML down.
-#place_label::citydots[type='city'][zoom>=4][zoom<=7][localrank=1] {
+#place::citydots[class='city'][zoom>=4][zoom<=7] {
   // explicitly defining all the `ldir` values wer'e going
   // to use shaves a bit off the final project.xml size
-  [ldir='N'],[ldir='S'],[ldir='E'],[ldir='W'],
-  [ldir='NE'],[ldir='SE'],[ldir='SW'],[ldir='NW'] {
     shield-file: url("shield/dot.svg");
     shield-unlock-image: true;
     shield-name: @name;
@@ -118,18 +116,9 @@
     shield-halo-fill: fadeout(#fff, 50%);
     shield-halo-radius: 1;
     shield-halo-rasterizer: fast;
-    [ldir='E'] { shield-text-dx: 5; }
-    [ldir='W'] { shield-text-dx: -5; }
-    [ldir='N'] { shield-text-dy: -5; }
-    [ldir='S'] { shield-text-dy: 5; }
-    [ldir='NE'] { shield-text-dx: 4; shield-text-dy: -4; }
-    [ldir='SE'] { shield-text-dx: 4; shield-text-dy: 4; }
-    [ldir='SW'] { shield-text-dx: -4; shield-text-dy: 4; }
-    [ldir='NW'] { shield-text-dx: -4; shield-text-dy: -4; }
-  }
 }
 
-#place_label[zoom>=8][localrank=1] {
+#place[zoom>=8] {
   text-name: @name;
   text-face-name: @sans;
   text-wrap-width: 120;
@@ -139,7 +128,7 @@
   text-halo-radius: 1;
   text-halo-rasterizer: fast;
   text-size: 10;
-  [type='city'] {
+  [class='city'] {
   	text-face-name: @sans_md;
     text-size: 16;
     [zoom>=10] { 
@@ -153,7 +142,7 @@
     // Hide at largest scales:
     [zoom>=16] { text-name: "''"; }
   }
-  [type='town'] {
+  [class='town'] {
     text-size: 14;
     [zoom>=12] { text-size: 16; }
     [zoom>=14] { text-size: 20; }
@@ -161,15 +150,15 @@
     // Hide at largest scales:
     [zoom>=18] { text-name: "''"; }
   }
-  [type='village'] {
+  [class='village'] {
     text-size: 12;
     [zoom>=12] { text-size: 14; }
     [zoom>=14] { text-size: 18; }
     [zoom>=16] { text-size: 22; }
   }
-  [type='hamlet'],
-  [type='suburb'],
-  [type='neighbourhood'] {
+  [class='hamlet'],
+  [class='suburb'],
+  [class='neighbourhood'] {
     text-fill: #633;
     text-face-name:	@sans_bd;
     text-transform: uppercase;
@@ -184,21 +173,21 @@
 // ---------------------------------------------------------------------
 // Points of interest
 
-#poi_label[zoom=14][scalerank<=1],
-#poi_label[zoom=15][scalerank<=2],
-#poi_label[zoom=16][scalerank<=3],
-#poi_label[zoom=17][scalerank<=4][localrank<=2],
-#poi_label[zoom>=18] {
+#poi[zoom=14][rank<=1],
+#poi[zoom=15][rank<=2],
+#poi[zoom=16][rank<=3],
+#poi[zoom=17][rank<=4],
+#poi[zoom>=18] {
   // Separate icon and label attachments are created to ensure that
   // all icon placement happens first, then labels are placed only
   // if there is still room.
-  ::icon[maki!=null] {
+  ::icon[class!=null] {
     // The [maki] field values match a subset of Maki icon names, so we
     // can use that in our url expression.
     // Not all POIs have a Maki icon assigned, so we limit this section
     // to those that do. See also <https://www.mapbox.com/maki/>
     marker-fill:#666;
-    marker-file:url('icon/[maki]-12.svg');
+    marker-file:url('icon/[class]-12.svg');
   }
   ::label {
     text-name: @name;
@@ -264,7 +253,7 @@
 // ---------------------------------------------------------------------
 // Water
 
-#water_label {
+#water_name {
   [zoom<=13],  // automatic area filtering @ low zooms
   [zoom>=14][area>500000],
   [zoom>=16][area>10000],

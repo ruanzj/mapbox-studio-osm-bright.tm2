@@ -5,7 +5,7 @@
 <Parameters>
   <Parameter name="attribution"><![CDATA[<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox</a> <a href='https://openstreetmap.org/about/' target='_blank'>&copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>]]></Parameter>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-5.9766,32.3985,3</Parameter>
+  <Parameter name="center">8.3881,47.1337,9</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">22</Parameter>
   <Parameter name="minzoom">0</Parameter>
@@ -14,16 +14,24 @@
 </Parameters>
 
 <FontSet name="fontset-0">
-  <Font face-name="Open Sans Light"/>
+  <Font face-name="Open Sans Italic"/>
   <Font face-name="Arial Unicode MS Regular"/>
 </FontSet>
 <FontSet name="fontset-1">
+  <Font face-name="Open Sans Regular"/>
+  <Font face-name="Arial Unicode MS Regular"/>
+</FontSet>
+<FontSet name="fontset-2">
+  <Font face-name="Open Sans Light"/>
+  <Font face-name="Arial Unicode MS Regular"/>
+</FontSet>
+<FontSet name="fontset-3">
   <Font face-name="Open Sans Bold"/>
   <Font face-name="Arial Unicode MS Bold"/>
   <Font face-name="Arial Unicode MS Regular"/>
 </FontSet>
-<FontSet name="fontset-2">
-  <Font face-name="Open Sans Regular"/>
+<FontSet name="fontset-4">
+  <Font face-name="Open Sans Semibold"/>
   <Font face-name="Arial Unicode MS Regular"/>
 </FontSet>
 <Style name="water-blur" filter-mode="first" image-filters="agg-stack-blur(1,1)" image-filters-inflate="true" comp-op="soft-light">
@@ -303,278 +311,776 @@
     <StyleName>building-wall</StyleName>
     <StyleName>building-roof</StyleName>  </Layer>
 
+<Style name="water_name" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([area] &gt; 500000)</Filter>
+    <TextSymbolizer fontset-name="fontset-0" fill="#5ea2e6" size="12" wrap-width="100" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.25)" halo-radius="1.5" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([area] &gt; 500000)</Filter>
+    <TextSymbolizer fontset-name="fontset-0" fill="#5ea2e6" size="12" wrap-width="100" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.25)" halo-radius="1.5" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([area] &gt; 10000)</Filter>
+    <TextSymbolizer fontset-name="fontset-0" fill="#5ea2e6" size="12" wrap-width="100" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.25)" halo-radius="1.5" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([area] &gt; 10000)</Filter>
+    <TextSymbolizer fontset-name="fontset-0" fill="#5ea2e6" size="12" wrap-width="100" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.25)" halo-radius="1.5" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <TextSymbolizer fontset-name="fontset-0" fill="#5ea2e6" size="12" wrap-width="100" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.25)" halo-radius="1.5" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <TextSymbolizer fontset-name="fontset-0" fill="#5ea2e6" size="12" wrap-width="100" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.25)" halo-radius="1.5" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+</Style>
 <Layer name="water_name"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-      </Layer>
+    <StyleName>water_name</StyleName>  </Layer>
 
 <Layer name="transportation_name"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
       </Layer>
 
+<Style name="place-citydots" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([class] = 'city')</Filter>
+    <ShieldSymbolizer size="14" file="shield/dot.svg" unlock-image="true" fontset-name="fontset-1" placement="point" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <Filter>([class] = 'city')</Filter>
+    <ShieldSymbolizer file="shield/dot.svg" unlock-image="true" size="12" fontset-name="fontset-1" placement="point" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></ShieldSymbolizer>
+  </Rule>
+</Style>
 <Style name="place" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>400000</MinScaleDenominator>
     <Filter>([class] = 'state')</Filter>
-    <TextSymbolizer halo-radius="2" size="16" character-spacing="2" wrap-width="100" fontset-name="fontset-0" placement="point" fill="#776655" halo-fill="rgba(255, 255, 255, 0.5)" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer halo-radius="2" size="16" character-spacing="2" wrap-width="100" fontset-name="fontset-2" placement="point" fill="#776655" halo-fill="rgba(255, 255, 255, 0.5)" halo-rasterizer="fast" wrap-before="true" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>1500000</MinScaleDenominator>
+    <Filter>([class] = 'state')</Filter>
+    <TextSymbolizer size="14" wrap-width="60" fontset-name="fontset-2" placement="point" fill="#776655" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-before="true" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>6500000</MaxScaleDenominator>
-    <MinScaleDenominator>1500000</MinScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
     <Filter>([class] = 'state')</Filter>
-    <TextSymbolizer size="14" wrap-width="60" fontset-name="fontset-0" placement="point" fill="#776655" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="14" wrap-width="60" fontset-name="fontset-2" placement="point" fill="#776655" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000000</MaxScaleDenominator>
     <MinScaleDenominator>6500000</MinScaleDenominator>
     <Filter>([class] = 'state')</Filter>
-    <TextSymbolizer size="12" wrap-width="40" fontset-name="fontset-0" placement="point" fill="#776655" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="12" wrap-width="40" fontset-name="fontset-2" placement="point" fill="#776655" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000000</MaxScaleDenominator>
     <MinScaleDenominator>25000000</MinScaleDenominator>
     <Filter>([class] = 'state')</Filter>
-    <TextSymbolizer fontset-name="fontset-0" placement="point" fill="#776655" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" size="9" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer fontset-name="fontset-2" placement="point" fill="#776655" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" size="9" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <Filter>([class] = 'state')</Filter>
+    <TextSymbolizer fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>400000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] &gt;= 6)</Filter>
-    <TextSymbolizer size="16" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="16" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>3000000</MaxScaleDenominator>
     <MinScaleDenominator>1500000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] &gt;= 6)</Filter>
-    <TextSymbolizer size="14" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="14" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>6500000</MaxScaleDenominator>
     <MinScaleDenominator>3000000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] &gt;= 6)</Filter>
-    <TextSymbolizer size="12" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="12" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>200000000</MaxScaleDenominator>
     <MinScaleDenominator>100000000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] &gt;= 6)</Filter>
-    <TextSymbolizer fontset-name="fontset-2" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer fontset-name="fontset-1" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000000</MaxScaleDenominator>
     <MinScaleDenominator>6500000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] &gt;= 6)</Filter>
-    <TextSymbolizer fontset-name="fontset-1" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer fontset-name="fontset-3" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] &gt;= 6)</Filter>
+    <TextSymbolizer fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>400000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 5)</Filter>
-    <TextSymbolizer size="18" wrap-width="120" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="18" wrap-width="120" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>3000000</MaxScaleDenominator>
     <MinScaleDenominator>1500000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 5)</Filter>
-    <TextSymbolizer size="16" wrap-width="90" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="16" wrap-width="90" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>6500000</MaxScaleDenominator>
     <MinScaleDenominator>3000000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 5)</Filter>
-    <TextSymbolizer size="14" wrap-width="60" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="14" wrap-width="60" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500000</MaxScaleDenominator>
     <MinScaleDenominator>6500000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 5)</Filter>
-    <TextSymbolizer size="13" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="13" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000000</MaxScaleDenominator>
     <MinScaleDenominator>12500000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 5)</Filter>
-    <TextSymbolizer size="11" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="11" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>200000000</MaxScaleDenominator>
     <MinScaleDenominator>100000000</MinScaleDenominator>
-    <Filter>([class] = 'country') and ([rank] = 5)</Filter>
-    <TextSymbolizer fontset-name="fontset-2" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000000</MaxScaleDenominator>
-    <MinScaleDenominator>25000000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 5)</Filter>
     <TextSymbolizer fontset-name="fontset-1" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>1500000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([class] = 'country') and ([rank] = 4)</Filter>
-    <TextSymbolizer size="20" wrap-width="120" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>3000000</MaxScaleDenominator>
-    <MinScaleDenominator>1500000</MinScaleDenominator>
-    <Filter>([class] = 'country') and ([rank] = 4)</Filter>
-    <TextSymbolizer size="18" wrap-width="120" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>6500000</MaxScaleDenominator>
-    <MinScaleDenominator>3000000</MinScaleDenominator>
-    <Filter>([class] = 'country') and ([rank] = 4)</Filter>
-    <TextSymbolizer size="16" wrap-width="90" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>12500000</MaxScaleDenominator>
-    <MinScaleDenominator>6500000</MinScaleDenominator>
-    <Filter>([class] = 'country') and ([rank] = 4)</Filter>
-    <TextSymbolizer size="15" wrap-width="60" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>25000000</MaxScaleDenominator>
-    <MinScaleDenominator>12500000</MinScaleDenominator>
-    <Filter>([class] = 'country') and ([rank] = 4)</Filter>
-    <TextSymbolizer size="13" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000000</MaxScaleDenominator>
-    <MinScaleDenominator>100000000</MinScaleDenominator>
-    <Filter>([class] = 'country') and ([rank] = 4)</Filter>
-    <TextSymbolizer fontset-name="fontset-2" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000000</MaxScaleDenominator>
     <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 5)</Filter>
+    <TextSymbolizer fontset-name="fontset-3" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 5)</Filter>
+    <TextSymbolizer fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 4)</Filter>
+    <TextSymbolizer size="20" wrap-width="120" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>1500000</MinScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 4)</Filter>
+    <TextSymbolizer size="18" wrap-width="120" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 4)</Filter>
+    <TextSymbolizer size="16" wrap-width="90" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 4)</Filter>
+    <TextSymbolizer size="15" wrap-width="60" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 4)</Filter>
+    <TextSymbolizer size="13" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>100000000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 4)</Filter>
     <TextSymbolizer fontset-name="fontset-1" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 4)</Filter>
+    <TextSymbolizer fontset-name="fontset-3" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 4)</Filter>
+    <TextSymbolizer fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>3000000</MaxScaleDenominator>
     <MinScaleDenominator>400000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 3)</Filter>
-    <TextSymbolizer size="20" wrap-width="120" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="20" wrap-width="120" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>6500000</MaxScaleDenominator>
     <MinScaleDenominator>3000000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 3)</Filter>
-    <TextSymbolizer size="18" wrap-width="60" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="18" wrap-width="60" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500000</MaxScaleDenominator>
     <MinScaleDenominator>6500000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 3)</Filter>
-    <TextSymbolizer size="17" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="17" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000000</MaxScaleDenominator>
     <MinScaleDenominator>12500000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 3)</Filter>
-    <TextSymbolizer size="15" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="15" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000000</MaxScaleDenominator>
     <MinScaleDenominator>25000000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 3)</Filter>
-    <TextSymbolizer size="11" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="11" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000000</MaxScaleDenominator>
     <MinScaleDenominator>50000000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 3)</Filter>
+    <TextSymbolizer fontset-name="fontset-3" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[code]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>100000000</MinScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 3)</Filter>
+    <TextSymbolizer fontset-name="fontset-1" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 3)</Filter>
+    <TextSymbolizer fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 2)</Filter>
+    <TextSymbolizer size="20" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 2)</Filter>
+    <TextSymbolizer size="17" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 2)</Filter>
+    <TextSymbolizer size="13" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000000</MinScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 2)</Filter>
+    <TextSymbolizer size="11" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000000</MaxScaleDenominator>
+    <MinScaleDenominator>100000000</MinScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 2)</Filter>
     <TextSymbolizer fontset-name="fontset-1" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[code]]]></TextSymbolizer>
   </Rule>
   <Rule>
-    <MaxScaleDenominator>200000000</MaxScaleDenominator>
-    <MinScaleDenominator>100000000</MinScaleDenominator>
-    <Filter>([class] = 'country') and ([rank] = 3)</Filter>
-    <TextSymbolizer fontset-name="fontset-2" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>12500000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 2)</Filter>
-    <TextSymbolizer size="20" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>25000000</MaxScaleDenominator>
-    <MinScaleDenominator>12500000</MinScaleDenominator>
-    <Filter>([class] = 'country') and ([rank] = 2)</Filter>
-    <TextSymbolizer size="17" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000000</MaxScaleDenominator>
-    <MinScaleDenominator>25000000</MinScaleDenominator>
-    <Filter>([class] = 'country') and ([rank] = 2)</Filter>
-    <TextSymbolizer size="13" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000000</MaxScaleDenominator>
-    <MinScaleDenominator>50000000</MinScaleDenominator>
-    <Filter>([class] = 'country') and ([rank] = 2)</Filter>
-    <TextSymbolizer size="11" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000000</MaxScaleDenominator>
-    <MinScaleDenominator>100000000</MinScaleDenominator>
-    <Filter>([class] = 'country') and ([rank] = 2)</Filter>
-    <TextSymbolizer fontset-name="fontset-2" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[code]]]></TextSymbolizer>
+    <TextSymbolizer fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500000</MaxScaleDenominator>
     <MinScaleDenominator>400000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 1)</Filter>
-    <TextSymbolizer size="20" wrap-width="120" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="20" wrap-width="120" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000000</MaxScaleDenominator>
     <MinScaleDenominator>12500000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 1)</Filter>
-    <TextSymbolizer size="20" wrap-width="120" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="20" wrap-width="120" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000000</MaxScaleDenominator>
     <MinScaleDenominator>25000000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 1)</Filter>
-    <TextSymbolizer size="14" wrap-width="90" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="14" wrap-width="90" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000000</MaxScaleDenominator>
     <MinScaleDenominator>50000000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 1)</Filter>
-    <TextSymbolizer size="12" wrap-width="60" fontset-name="fontset-1" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="12" wrap-width="60" fontset-name="fontset-3" placement="point" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>200000000</MaxScaleDenominator>
     <MinScaleDenominator>100000000</MinScaleDenominator>
     <Filter>([class] = 'country') and ([rank] = 1)</Filter>
-    <TextSymbolizer fontset-name="fontset-2" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer fontset-name="fontset-1" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <Filter>([class] = 'country') and ([rank] = 1)</Filter>
+    <TextSymbolizer fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>200000000</MaxScaleDenominator>
     <MinScaleDenominator>100000000</MinScaleDenominator>
-    <Filter>([class] = 'country')</Filter>
-    <TextSymbolizer fontset-name="fontset-2" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
     <Filter>([class] = 'country')</Filter>
     <TextSymbolizer fontset-name="fontset-1" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([class] = 'country')</Filter>
+    <TextSymbolizer fontset-name="fontset-3" placement="point" size="9" fill="#323130" halo-fill="#ffffff" halo-radius="1" halo-rasterizer="fast" wrap-width="20" wrap-before="true" line-spacing="-3" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <Filter>([class] = 'country')</Filter>
+    <TextSymbolizer fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([class] = 'hamlet')</Filter>
+    <TextSymbolizer size="14" character-spacing="2" fill="#663333" fontset-name="fontset-3" text-transform="uppercase" wrap-width="120" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([class] = 'hamlet')</Filter>
+    <TextSymbolizer size="12" character-spacing="1" fill="#663333" fontset-name="fontset-3" text-transform="uppercase" wrap-width="120" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([class] = 'hamlet')</Filter>
+    <TextSymbolizer size="11" fill="#663333" fontset-name="fontset-3" text-transform="uppercase" character-spacing="0.5" wrap-width="120" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([class] = 'hamlet')</Filter>
+    <TextSymbolizer fill="#663333" fontset-name="fontset-3" text-transform="uppercase" character-spacing="0.5" wrap-width="120" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([class] = 'suburb')</Filter>
+    <TextSymbolizer size="14" character-spacing="2" fill="#663333" fontset-name="fontset-3" text-transform="uppercase" wrap-width="120" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([class] = 'suburb')</Filter>
+    <TextSymbolizer size="12" character-spacing="1" fill="#663333" fontset-name="fontset-3" text-transform="uppercase" wrap-width="120" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([class] = 'suburb')</Filter>
+    <TextSymbolizer size="11" fill="#663333" fontset-name="fontset-3" text-transform="uppercase" character-spacing="0.5" wrap-width="120" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([class] = 'suburb')</Filter>
+    <TextSymbolizer fill="#663333" fontset-name="fontset-3" text-transform="uppercase" character-spacing="0.5" wrap-width="120" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([class] = 'neighbourhood')</Filter>
+    <TextSymbolizer size="14" character-spacing="2" fill="#663333" fontset-name="fontset-3" text-transform="uppercase" wrap-width="120" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([class] = 'neighbourhood')</Filter>
+    <TextSymbolizer size="12" character-spacing="1" fill="#663333" fontset-name="fontset-3" text-transform="uppercase" wrap-width="120" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([class] = 'neighbourhood')</Filter>
+    <TextSymbolizer size="11" fill="#663333" fontset-name="fontset-3" text-transform="uppercase" character-spacing="0.5" wrap-width="120" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([class] = 'neighbourhood')</Filter>
+    <TextSymbolizer fill="#663333" fontset-name="fontset-3" text-transform="uppercase" character-spacing="0.5" wrap-width="120" wrap-before="true" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([class] = 'village')</Filter>
+    <TextSymbolizer size="22" fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([class] = 'village')</Filter>
+    <TextSymbolizer size="18" fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([class] = 'village')</Filter>
+    <TextSymbolizer size="14" fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([class] = 'village')</Filter>
+    <TextSymbolizer size="12" fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([class] = 'town')</Filter>
+    <TextSymbolizer size="24" fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA['']]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <MinScaleDenominator>2500</MinScaleDenominator>
+    <Filter>([class] = 'town')</Filter>
+    <TextSymbolizer size="24" fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([class] = 'town')</Filter>
+    <TextSymbolizer size="20" fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([class] = 'town')</Filter>
+    <TextSymbolizer size="16" fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([class] = 'town')</Filter>
+    <TextSymbolizer size="14" fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([class] = 'city')</Filter>
+    <TextSymbolizer size="24" wrap-width="180" fontset-name="fontset-4" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA['']]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([class] = 'city')</Filter>
+    <TextSymbolizer size="24" wrap-width="180" fontset-name="fontset-4" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([class] = 'city')</Filter>
+    <TextSymbolizer size="18" wrap-width="140" fontset-name="fontset-4" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([class] = 'city')</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="16" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <TextSymbolizer fontset-name="fontset-1" wrap-width="120" wrap-before="true" fill="#333333" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" size="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
 </Style>
 <Layer name="place"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-    <StyleName>place</StyleName>  </Layer>
+    <StyleName>place</StyleName>
+    <StyleName>place-citydots</StyleName>  </Layer>
 
 <Layer name="housenumber"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
       </Layer>
 
+<Style name="poi-label" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <MinScaleDenominator>2500</MinScaleDenominator>
+    <Filter>([maki] != null) and ([rank] &lt;= 1)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([maki] != null) and ([rank] &lt;= 1)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([maki] != null) and ([rank] &lt;= 1)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <MinScaleDenominator>5000</MinScaleDenominator>
+    <Filter>([maki] != null) and ([rank] &lt;= 1)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([maki] != null) and ([rank] &lt;= 1)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <MinScaleDenominator>2500</MinScaleDenominator>
+    <Filter>([maki] != null) and ([rank] &lt;= 2)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([maki] != null) and ([rank] &lt;= 2)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <MinScaleDenominator>5000</MinScaleDenominator>
+    <Filter>([maki] != null) and ([rank] &lt;= 2)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([maki] != null) and ([rank] &lt;= 2)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <MinScaleDenominator>2500</MinScaleDenominator>
+    <Filter>([maki] != null) and ([rank] &lt;= 3)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <MinScaleDenominator>5000</MinScaleDenominator>
+    <Filter>([maki] != null) and ([rank] &lt;= 3)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([maki] != null) and ([rank] &lt;= 3)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <MinScaleDenominator>2500</MinScaleDenominator>
+    <Filter>([rank] &lt;= 4) and ([maki] != null)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([rank] &lt;= 4) and ([maki] != null)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([maki] != null)</Filter>
+    <TextSymbolizer dy="8" fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <MinScaleDenominator>2500</MinScaleDenominator>
+    <Filter>([rank] &lt;= 1)</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([rank] &lt;= 1)</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([rank] &lt;= 1)</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <MinScaleDenominator>5000</MinScaleDenominator>
+    <Filter>([rank] &lt;= 1)</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([rank] &lt;= 1)</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <MinScaleDenominator>2500</MinScaleDenominator>
+    <Filter>([rank] &lt;= 2)</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([rank] &lt;= 2)</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <MinScaleDenominator>5000</MinScaleDenominator>
+    <Filter>([rank] &lt;= 2)</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([rank] &lt;= 2)</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <MinScaleDenominator>2500</MinScaleDenominator>
+    <Filter>([rank] &lt;= 3)</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <MinScaleDenominator>5000</MinScaleDenominator>
+    <Filter>([rank] &lt;= 3)</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([rank] &lt;= 3)</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <MinScaleDenominator>2500</MinScaleDenominator>
+    <Filter>([rank] &lt;= 4)</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([rank] &lt;= 4)</Filter>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <TextSymbolizer fontset-name="fontset-4" size="12" fill="#666666" halo-fill="rgba(255, 255, 255, 0.5)" halo-radius="1" halo-rasterizer="fast" wrap-width="70" line-spacing="-1" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+</Style>
+<Style name="poi-icon" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <MinScaleDenominator>5000</MinScaleDenominator>
+    <Filter>([class] != null) and ([rank] &lt;= 1)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([class] != null) and ([rank] &lt;= 1)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([class] != null) and ([rank] &lt;= 1)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <MinScaleDenominator>2500</MinScaleDenominator>
+    <Filter>([class] != null) and ([rank] &lt;= 1)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([class] != null) and ([rank] &lt;= 1)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <MinScaleDenominator>5000</MinScaleDenominator>
+    <Filter>([class] != null) and ([rank] &lt;= 2)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([class] != null) and ([rank] &lt;= 2)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <MinScaleDenominator>2500</MinScaleDenominator>
+    <Filter>([class] != null) and ([rank] &lt;= 2)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([class] != null) and ([rank] &lt;= 2)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <MinScaleDenominator>5000</MinScaleDenominator>
+    <Filter>([rank] &lt;= 3) and ([class] != null)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <MinScaleDenominator>2500</MinScaleDenominator>
+    <Filter>([rank] &lt;= 3) and ([class] != null)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([rank] &lt;= 3) and ([class] != null)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <MinScaleDenominator>2500</MinScaleDenominator>
+    <Filter>([rank] &lt;= 4) and ([class] != null)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([rank] &lt;= 4) and ([class] != null)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([class] != null)</Filter>
+    <MarkersSymbolizer fill="#666666" file="icon/[class]-12.svg" />
+  </Rule>
+</Style>
 <Layer name="poi"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-      </Layer>
+    <StyleName>poi-icon</StyleName>
+    <StyleName>poi-label</StyleName>  </Layer>
 
 </Map>

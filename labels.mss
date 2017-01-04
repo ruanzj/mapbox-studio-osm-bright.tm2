@@ -41,7 +41,7 @@
 // The country labels in MapBox Streets vector tiles are placed by hand,
 // optimizing the arrangement to fit as many as possible in densely-
 // labeled areas.
-#country_label[zoom>=2][zoom<=10] {
+#place[class='country'][zoom>=2][zoom<=10] {
   text-name: @name;
   text-face-name: @sans_bd;
   [zoom=2] { text-face-name: @sans; }
@@ -54,20 +54,20 @@
   text-wrap-width: 20;
   text-wrap-before: true;
   text-line-spacing: -3;
-  [scalerank=1] {
+  [rank=1] {
     [zoom=3]  { text-size: 12; text-wrap-width: 60; }
     [zoom=4]  { text-size: 14; text-wrap-width: 90; }
     [zoom=5]  { text-size: 20; text-wrap-width: 120; }
     [zoom>=6] { text-size: 20; text-wrap-width: 120; }
   }
-  [scalerank=2] {
+  [rank=2] {
     [zoom=2]  { text-name: [code]; }
     [zoom=3]  { text-size: 11; }
     [zoom=4]  { text-size: 13; }
     [zoom=5]  { text-size: 17; }
     [zoom>=6] { text-size: 20; }
   }
-  [scalerank=3] {
+  [rank=3] {
     [zoom=3]  { text-name: [code]; }
     [zoom=4]  { text-size: 11; }
     [zoom=5]  { text-size: 15; }
@@ -75,21 +75,21 @@
     [zoom=7]  { text-size: 18; text-wrap-width: 60; }
     [zoom>=8] { text-size: 20; text-wrap-width: 120; }
   }
-  [scalerank=4] {
+  [rank=4] {
     [zoom=5] { text-size: 13; }
     [zoom=6] { text-size: 15; text-wrap-width: 60  }
     [zoom=7] { text-size: 16; text-wrap-width: 90; }
     [zoom=8] { text-size: 18; text-wrap-width: 120; }
     [zoom>=9] { text-size: 20; text-wrap-width: 120; }
   }
-  [scalerank=5] {
+  [rank=5] {
     [zoom=5] { text-size: 11; }
     [zoom=6] { text-size: 13; }
     [zoom=7] { text-size: 14; text-wrap-width: 60; }
     [zoom=8] { text-size: 16; text-wrap-width: 90; }
     [zoom>=9] { text-size: 18; text-wrap-width: 120; }
   }
-  [scalerank>=6] {
+  [rank>=6] {
     [zoom=7] { text-size: 12; }
     [zoom=8] { text-size: 14; }
     [zoom>=9] { text-size: 16; }

@@ -158,15 +158,15 @@ Map {
 #aeroway [zoom>=12] {
   ['mapnik::geometry_type'=2] {
     line-color: @land * 0.96;
-    [type='runway'] { line-width: 5; }    
-    [type='taxiway'] {  
+    [class='runway'] { line-width: 5; }    
+    [class='taxiway'] {  
       line-width: 1;
       [zoom>=15] { line-width: 2; }
     }
   }    
   ['mapnik::geometry_type'=3] {
     polygon-fill: @land * 0.96;
-    [type='apron'] {
+    [class='apron'] {
       polygon-fill: @land * 0.98;  
     }  
   }

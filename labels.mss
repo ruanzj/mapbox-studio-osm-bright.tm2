@@ -216,7 +216,7 @@
   shield-name: "[ref].replace('·', '\n')";
   shield-size: 9;
   shield-line-spacing: -4;
-  shield-file: url('shield/[shield]-[reflen].svg');
+  shield-file: url('shield/default-[reflen].svg');
   shield-face-name: @sans;
   shield-fill: #333;
   [zoom>=14] {

@@ -5,7 +5,7 @@
 <Parameters>
   <Parameter name="attribution"><![CDATA[<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox</a> <a href='https://openstreetmap.org/about/' target='_blank'>&copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>]]></Parameter>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">8.7891,47.2792,2</Parameter>
+  <Parameter name="center">8.5027,47.4522,11</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">22</Parameter>
   <Parameter name="minzoom">0</Parameter>
@@ -1594,26 +1594,26 @@
     <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>400000</MinScaleDenominator>
     <Filter>([class] = 'motorway') and ([ref_length] &lt;= 6)</Filter>
-    <ShieldSymbolizer placement="point" avoid-edges="false" size="9" line-spacing="-4" file="shield/[shield]-[reflen].svg" fontset-name="fontset-1" fill="#333333" ><![CDATA[[ref].replace('·', '\n')]]></ShieldSymbolizer>
+    <ShieldSymbolizer placement="point" avoid-edges="false" size="9" line-spacing="-4" file="shield/default-[reflen].svg" fontset-name="fontset-1" fill="#333333" ><![CDATA[[ref].replace('·', '\n')]]></ShieldSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>6500000</MaxScaleDenominator>
     <MinScaleDenominator>1500000</MinScaleDenominator>
     <Filter>([class] = 'motorway') and ([ref_length] &lt;= 6)</Filter>
-    <ShieldSymbolizer placement="point" avoid-edges="false" size="9" line-spacing="-4" file="shield/[shield]-[reflen].svg" fontset-name="fontset-1" fill="#333333" ><![CDATA[[ref].replace('·', '\n')]]></ShieldSymbolizer>
+    <ShieldSymbolizer placement="point" avoid-edges="false" size="9" line-spacing="-4" file="shield/default-[reflen].svg" fontset-name="fontset-1" fill="#333333" ><![CDATA[[ref].replace('·', '\n')]]></ShieldSymbolizer>
   </Rule>
 </Style>
 <Style name="transportation_name-shield-ln" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
     <Filter>([reflen] &lt;= 6)</Filter>
-    <ShieldSymbolizer transform="scale(1.25,1.25)" size="11" placement="line" spacing="400" minimum-distance="100" avoid-edges="true" line-spacing="-4" file="shield/[shield]-[reflen].svg" fontset-name="fontset-1" fill="#333333" ><![CDATA[[ref].replace('·', '\n')]]></ShieldSymbolizer>
+    <ShieldSymbolizer transform="scale(1.25,1.25)" size="11" placement="line" spacing="400" minimum-distance="100" avoid-edges="true" line-spacing="-4" file="shield/default-[reflen].svg" fontset-name="fontset-1" fill="#333333" ><![CDATA[[ref].replace('·', '\n')]]></ShieldSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
     <Filter>([reflen] &lt;= 6)</Filter>
-    <ShieldSymbolizer placement="line" spacing="400" minimum-distance="100" avoid-edges="true" size="9" line-spacing="-4" file="shield/[shield]-[reflen].svg" fontset-name="fontset-1" fill="#333333" ><![CDATA[[ref].replace('·', '\n')]]></ShieldSymbolizer>
+    <ShieldSymbolizer placement="line" spacing="400" minimum-distance="100" avoid-edges="true" size="9" line-spacing="-4" file="shield/default-[reflen].svg" fontset-name="fontset-1" fill="#333333" ><![CDATA[[ref].replace('·', '\n')]]></ShieldSymbolizer>
   </Rule>
 </Style>
 <Layer name="transportation_name"

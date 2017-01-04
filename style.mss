@@ -20,14 +20,10 @@ Map {
 // ---------------------------------------------------------------------
 // Political boundaries
 
-#admin {
+#boundary {
   opacity: 0.5;
   line-join: round;
   line-color: #446;
-  [maritime=1] {
-    // downplay boundaries that are over water
-    line-color: @water;
-  }
   // Countries
   [admin_level=2] {
     line-width: 0.8;

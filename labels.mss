@@ -190,7 +190,7 @@
     marker-file:url('icon/[class]-12.svg');
   }
   ::label {
-    text-name: @name;
+    text-name: '[name]';
     text-face-name: @sans_md;
     text-size: 12;
     text-fill: #666;
@@ -202,7 +202,7 @@
     //text-transform: uppercase;
     //text-character-spacing:	0.25;
     // POI labels with an icon need to be offset:
-    [maki!=null] { text-dy: 8; }
+    [class!=null] { text-dy: 8; }
   }
 }
 
@@ -210,9 +210,9 @@
 // ---------------------------------------------------------------------
 // Roads
 
-#road_label::shield-pt[class='motorway'][zoom>=7][zoom<=10][localrank=1][reflen<=6],
-#road_label::shield-pt[class='motorway'][zoom>=9][zoom<=10][localrank=1][reflen<=6],
-#road_label::shield-ln[zoom>=11][reflen<=6] {
+#transportation_name::shield-pt[class='motorway'][zoom>=7][zoom<=10][ref_length<=6],
+#transportation_name::shield-pt[class='motorway'][zoom>=9][zoom<=10][ref_length<=6],
+#transportation_name::shield-ln[zoom>=11][reflen<=6] {
   shield-name: "[ref].replace('·', '\n')";
   shield-size: 9;
   shield-line-spacing: -4;
@@ -224,20 +224,20 @@
     shield-size: 11;
   }
 }
-#road_label::shield-pt[class='motorway'][zoom>=7][zoom<=10][localrank=1][reflen<=6],
-#road_label::shield-pt[class='motorway'][zoom>=9][zoom<=10][localrank=1][reflen<=6] {
+#transportation_name::shield-pt[class='motorway'][zoom>=7][zoom<=10][ref_length<=6],
+#transportation_name::shield-pt[class='motorway'][zoom>=9][zoom<=10][ref_length<=6] {
   shield-placement: point;
   shield-avoid-edges: false;
 }
-#road_label::shield-ln[zoom>=11][reflen<=6] {
+#transportation_name::shield-ln[zoom>=11][reflen<=6] {
   shield-placement: line;
   shield-spacing: 400;
   shield-min-distance: 100;
   shield-avoid-edges: true;
 }
 
-#road_label {
-  text-name: @name;
+#transportation_name {
+  text-name: '[name]';
   text-placement: line;  // text follows line path
   text-face-name: @sans;
   text-fill: #765;
@@ -273,8 +273,8 @@
 // ---------------------------------------------------------------------
 // House numbers
 
-#housenum_label[zoom>=18] {
-  text-name: [house_num];
+#housenumber[zoom>=18] {
+  text-name: [housenumber];
   text-face-name: @sans_it;
   text-fill: #cba;
   text-size: 8;

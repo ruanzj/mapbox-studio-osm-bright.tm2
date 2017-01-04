@@ -35,8 +35,8 @@ Map {
   }
 }
   // States / Provices / Subregions
-#state_label[zoom>=4][zoom<=10] {
-  text-name: [abbr];
+#place[class='state'][zoom>=4][zoom<=10] {
+  text-name: @name;
   text-face-name: @sans_lt;
   text-placement: point;
   text-fill: @state_text;
@@ -44,28 +44,18 @@ Map {
   text-halo-radius: 1;
   text-halo-rasterizer: fast;
   text-size: 9;
-  [zoom>=5][area>100000],
-  [zoom>=6][area>50000],
-  [zoom>=7][area>10000],
-  [zoom>=8][area<=10000] {
-    text-name: @name;
-  }
   [zoom>=5][zoom<=6] {
-    [area>10000] { text-size: 12; }
-    [area>50000] { text-size: 14; }
+    text-size: 12;
     text-wrap-width: 40;
   }
   [zoom>=7][zoom<=8] {
     text-size: 14;
-    [area>50000] { text-size: 16; text-character-spacing: 1; }
-    [area>100000] { text-size: 18; text-character-spacing: 3; }
     text-wrap-width: 60;
   }
   [zoom>=9][zoom<=10] {
     text-halo-radius: 2;
     text-size: 16;
     text-character-spacing: 2;
-    [area>50000] { text-size: 18; text-character-spacing: 2; }
     text-wrap-width: 100;
   }
 }
@@ -118,6 +108,8 @@ Map {
 
 // ---------------------------------------------------------------------
 // Landuse areas 
+
+
 
 #landuse {
   // Land-use and land-cover are not well-separated concepts in

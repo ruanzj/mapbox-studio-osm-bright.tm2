@@ -109,22 +109,23 @@ Map {
 // ---------------------------------------------------------------------
 // Landuse areas 
 
-
+#landcover {
+  [class='grass'] { polygon-fill: #d8e8c8; }
+  ::overlay {
+    // Landuse classes look better as a transparent overlay.
+    opacity: 0.1;
+    [class='wood'] { polygon-fill: #6a4; polygon-gamma: 0.5; }
+  }
+}
 
 #landuse {
   // Land-use and land-cover are not well-separated concepts in
   // OpenStreetMap, so this layer includes both. The 'class' field
   // is a highly opinionated simplification of the myriad LULC
   // tag combinations into a limited set of general classes.
-  [class='park'] { polygon-fill: #d8e8c8; }
   [class='cemetery'] { polygon-fill: mix(#d8e8c8, #ddd, 25%); }
   [class='hospital'] { polygon-fill: #fde; }
   [class='school'] { polygon-fill: #f0e8f8; }
-  ::overlay {
-    // Landuse classes look better as a transparent overlay.
-    opacity: 0.1;
-    [class='wood'] { polygon-fill: #6a4; polygon-gamma: 0.5; }
-  }
 }
 
 // ---------------------------------------------------------------------

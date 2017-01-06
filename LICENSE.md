@@ -1,4 +1,5 @@
 This document sets forth the licenses under which the design and code in this repository (collectively, the "Style") are made available.  The Style is copyright (c) 2013, Mapbox, all rights reserved.
+Modifications copyright (c) 2016, KlokanTech.com & OpenMapTiles contributors.
 
 # Code License
 

@@ -1,5 +1,8 @@
-This document sets forth the licenses under which the design and code in this repository (collectively, the "Style") are made available.  The Style is copyright (c) 2013, Mapbox, all rights reserved.
+Copyright (c) 2013, Mapbox  
 Modifications copyright (c) 2016, KlokanTech.com & OpenMapTiles contributors.
+All rights reserved.
+
+This document sets forth the licenses under which the design and code in this repository (collectively, the "Style") are made available.
 
 # Code License
 
@@ -19,6 +22,8 @@ are permitted provided that the following conditions are met:
 The visual design features of the Style (also known as the "look and feel") is licensed under the Creative Commons Attribution 3.0 license. To view a copy of the license, visit http://creativecommons.org/licenses/by/3.0/. Attribution need not be provided on map images, but should be reasonably accessable from maps based on on the Style (for example, in a webpage linked from a copyright notice on the map).
 
 Copyright, database rights, and any other intellectual property or proprietary rights in vector tiles, satellite or aerial imagery, and any other map data offered by Mapbox for use with the Style are expressly excluded from this license.
+
+The attribution requirements for the used OpenMapTiles vector tile schema are defined in: https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md
 
 # Icons
 

@@ -10,6 +10,9 @@
 @land: #f8f4f0;
 @water: #a0c8f0;
 
+@state_text:        #765;
+@state_halo:        @place_halo;
+
 Map {
   background-color:@land;
 }
@@ -17,14 +20,10 @@ Map {
 // ---------------------------------------------------------------------
 // Political boundaries
 
-#admin {
+#boundary {
   opacity: 0.5;
   line-join: round;
   line-color: #446;
-  [maritime=1] {
-    // downplay boundaries that are over water
-    line-color: @water;
-  }
   // Countries
   [admin_level=2] {
     line-width: 0.8;
@@ -34,13 +33,30 @@ Map {
     [zoom>=8] { line-width: 4; }
     [disputed=1] { line-dasharray: 4,4; }
   }
+}
   // States / Provices / Subregions
-  [admin_level>=3] {
-    line-width: 0.3;
-    line-dasharray: 10,3,3,3;
-    [zoom>=6] { line-width: 1; }
-    [zoom>=8] { line-width: 1.5; }
-    [zoom>=12] { line-width: 2; }
+#place[class='state'][zoom>=4][zoom<=10] {
+  text-name: @name;
+  text-face-name: @sans_lt;
+  text-placement: point;
+  text-fill: @state_text;
+  text-halo-fill: fadeout(lighten(@land,5%),50%);
+  text-halo-radius: 1;
+  text-halo-rasterizer: fast;
+  text-size: 9;
+  [zoom>=5][zoom<=6] {
+    text-size: 12;
+    text-wrap-width: 40;
+  }
+  [zoom>=7][zoom<=8] {
+    text-size: 14;
+    text-wrap-width: 60;
+  }
+  [zoom>=9][zoom<=10] {
+    text-halo-radius: 2;
+    text-size: 16;
+    text-character-spacing: 2;
+    text-wrap-width: 100;
   }
 }
 
@@ -65,6 +81,7 @@ Map {
     polygon-fill: #f0f0ff;
     comp-op: soft-light;
     image-filters: agg-stack-blur(1,1);
+    image-filters-inflate: true;
     polygon-geometry-transform: translate(0,1);
     polygon-clip: false;
   }
@@ -92,20 +109,23 @@ Map {
 // ---------------------------------------------------------------------
 // Landuse areas 
 
-#landuse {
-  // Land-use and land-cover are not well-separated concepts in
-  // OpenStreetMap, so this layer includes both. The 'class' field
-  // is a highly opinionated simplification of the myriad LULC
-  // tag combinations into a limited set of general classes.
-  [class='park'] { polygon-fill: #d8e8c8; }
-  [class='cemetery'] { polygon-fill: mix(#d8e8c8, #ddd, 25%); }
-  [class='hospital'] { polygon-fill: #fde; }
-  [class='school'] { polygon-fill: #f0e8f8; }
+#landcover {
+  [class='grass'] { polygon-fill: #d8e8c8; }
   ::overlay {
     // Landuse classes look better as a transparent overlay.
     opacity: 0.1;
     [class='wood'] { polygon-fill: #6a4; polygon-gamma: 0.5; }
   }
+}
+
+#landuse {
+  // Land-use and land-cover are not well-separated concepts in
+  // OpenStreetMap, so this layer includes both. The 'class' field
+  // is a highly opinionated simplification of the myriad LULC
+  // tag combinations into a limited set of general classes.
+  [class='cemetery'] { polygon-fill: mix(#d8e8c8, #ddd, 25%); }
+  [class='hospital'] { polygon-fill: #fde; }
+  [class='school'] { polygon-fill: #f0e8f8; }
 }
 
 // ---------------------------------------------------------------------
@@ -138,15 +158,15 @@ Map {
 #aeroway [zoom>=12] {
   ['mapnik::geometry_type'=2] {
     line-color: @land * 0.96;
-    [type='runway'] { line-width: 5; }    
-    [type='taxiway'] {  
+    [class='runway'] { line-width: 5; }    
+    [class='taxiway'] {  
       line-width: 1;
       [zoom>=15] { line-width: 2; }
     }
   }    
   ['mapnik::geometry_type'=3] {
     polygon-fill: @land * 0.96;
-    [type='apron'] {
+    [class='apron'] {
       polygon-fill: @land * 0.98;  
     }  
   }
